@@ -268,7 +268,7 @@ print "penW(5, 5)"
 print penW(5, 5)
 
 print "total pens"
-print penN(5, 5)+(penE(5, 5)+(penS(5, 5)+(penW(5, 5)
+print penN(5, 5)+penE(5, 5)+penS(5, 5)+penW(5, 5)
 
 #function to add growth and apply penalties		
 def alter(x, y) :
