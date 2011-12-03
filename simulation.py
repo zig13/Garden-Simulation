@@ -129,9 +129,6 @@ def getcell(x, y) :
 	if x == 7 :
 		x = (x7[y])
 	return x
-	
-print "getcell(5, 5)"
-print getcell(5, 5)
 
 #functions to get the growth values of the plants surrounding the plant at the given coordinates
 def retN(x, y) : # "retN" as in "retrive north"
@@ -154,9 +151,6 @@ def retN(x, y) : # "retN" as in "retrive north"
 	if x == 7 :
 		return (x7[y+1])
 		
-print "retN(5, 5)"
-print retN(5, 5)
-		
 def retE(x, y) :
 	if x == 7 :
 		return 0
@@ -174,9 +168,6 @@ def retE(x, y) :
 		return (x6[y])
 	if x == 6 :
 		return (x7[y])
-		
-print "retE(5, 5)"
-print retE(5, 5)
 		
 def retS(x, y) :
 	if y == 0 :
@@ -198,9 +189,6 @@ def retS(x, y) :
 	if x == 7 :
 		return (x7[y-1])
 		
-print "retS(5, 5)"
-print retS(5, 5)
-		
 def retW(x, y) :
 	if x == 0 :
 		return 0
@@ -218,9 +206,6 @@ def retW(x, y) :
 		return (x5[y])
 	if x == 7 :
 		return (x6[y])
-		
-print "retW(5, 5)"
-print retW(5, 5)
 
 #functions to generate the penalty for each neibouring plant		
 def penN(x, y) : #"penN" as in "Penalty from North plant"
@@ -231,9 +216,6 @@ def penN(x, y) : #"penN" as in "Penalty from North plant"
 	else :
 		return random.choice([0.24, 0.251, 0.26, 0.28, 0.3]) #penalty for each normal neighbour
 		
-print "penN(5, 5)"
-print penN(5, 5)
-		
 def penE(x, y) :
 	if retE(x, y) == 0 :
 		return 0 #penalty for each dead (size 0) neighbour
@@ -242,19 +224,13 @@ def penE(x, y) :
 	else :
 		return random.choice([0.24, 0.251, 0.26, 0.28, 0.3]) #penalty for each normal (size 1 or 7) neighbour
 		
-print "penE(5, 5)"
-print penE(5, 5)
-		
 def penS(x, y) :
 	if retS(x, y) == 0 :
 		return 0 #penalty for each dead (size 0) neighbour
 	if retS(x, y) > 6.72 : #the size over which a plant is considered large
 		return random.choice([0.46, 0.5, 0.523, 0.528, 0.53]) #penalty for each large (size 8 or 9) neighbour
 	else :
-		return random.choice([0.24, 0.251, 0.26, 0.28, 0.3]) #penalty for each normal (size 1 or 7) neighbour	
-		
-print "penS(5, 5)"
-print penS(5, 5)
+		return random.choice([0.24, 0.251, 0.26, 0.28, 0.3]) #penalty for each normal (size 1 or 7) neighbour
 		
 def penW(x, y) :
 	if retW(x, y) == 0 :
@@ -263,12 +239,6 @@ def penW(x, y) :
 		return random.choice([0.46, 0.5, 0.523, 0.528, 0.53]) #penalty for each large (size 8 or 9) neighbour
 	else :
 		return random.choice([0.24, 0.251, 0.26, 0.28, 0.3]) #penalty for each normal (size 1 or 7) neighbour
-		
-print "penW(5, 5)"
-print penW(5, 5)
-
-print "total pens"
-print penN(5, 5)+penE(5, 5)+penS(5, 5)+penW(5, 5)
 
 #function to add growth and apply penalties		
 def alter(x, y) :
@@ -276,8 +246,6 @@ def alter(x, y) :
 		return 0
 	else :
 		return (getcell(x, y)+1)-(penN(x, y)+penE(x, y)+penS(x, y)+penW(x, y)) #+1 per turn growth is added and penalties are removed
-print "alter(5, 5)"
-print alter(5, 5)
 
 #function to stop growth past 9	
 def cap(x, y) :
@@ -285,9 +253,6 @@ def cap(x, y) :
 		return 9
 	else :
 		return alter(x, y)
-		
-print "cap(5, 5)"
-print cap(5, 5)
 		
 #now what all the above functions are actually for and when they are actually run!
 x0.insert(0, cap(0, 0))
@@ -1258,3 +1223,4 @@ print "|" , format((x0[1]), '.0f') , "|" , format((x1[1]), '.0f') , "|" , format
 print "---------------------------------"
 print "|" , format((x0[0]), '.0f') , "|" , format((x1[0]), '.0f') , "|" , format((x2[0]), '.0f') , "|" , format((x3[0]), '.0f') , "|" , format((x4[0]), '.0f') , "|" , format((x5[0]), '.0f') , "|" , format((x6[0]), '.0f') , "|" , format((x7[0]), '.0f') , "|"
 print "---------------------------------"
+ask1 = int(raw_input("What's the lowest number you want?" ))
